@@ -155,14 +155,11 @@ namespace BahamutCommon.Encryption
             Array.Copy(Encoding.UTF8.GetBytes(Key.PadRight(bKey.Length)), bKey, bKey.Length);
 
             MemoryStream mStream = new MemoryStream(encryptedBytes);
-            //mStream.Write( encryptedBytes, 0, encryptedBytes.Length );  
-            //mStream.Seek( 0, SeekOrigin.Begin );  
             RijndaelManaged aes = new RijndaelManaged();
             aes.Mode = CipherMode.ECB;
             aes.Padding = PaddingMode.PKCS7;
             aes.KeySize = 128;
             aes.Key = bKey;
-            //aes.IV = _iV;  
             CryptoStream cryptoStream = new CryptoStream(mStream, aes.CreateDecryptor(), CryptoStreamMode.Read);
             try
             {
