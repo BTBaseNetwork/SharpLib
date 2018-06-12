@@ -25,7 +25,7 @@ namespace BahamutCommon.Utils
 
         public static TimeSpan UnixTimeSpanOfDateTime(DateTime date)
         {
-            return date - UnixTimeSpanZeroDate();
+            return date.ToUniversalTime() - UnixTimeSpanZeroDate();
         }
 
         public static long UnixTimeSpanOfDateTimeMs(DateTime date)
